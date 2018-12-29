@@ -89,6 +89,7 @@ for year_url in years_url:
                 genre = container.find('span', class_ = 'genre').text
                 genres.append(genre.strip())
 
+# Merge the data into a pandas DataFrame
 test_df = pd.DataFrame({'movie':names,
 'year':years,'imdb':imdb_ratings,'genre':genres,'votes':votes,
 'metascore':metascores})
