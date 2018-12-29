@@ -1,9 +1,3 @@
-
-# coding: utf-8
-
-# In[10]:
-
-
 import pandas as pd
 import requests
 from requests import get
@@ -65,10 +59,10 @@ for year_url in years_url:
         # Select all the 50 movie containers from a single page
         mv_containers = page_html.find_all('div', class_ = 'lister-item mode-advanced')
 
-        # For every movie of these 50
+        # For every movie of these 50...
         for container in mv_containers:
 
-            # Include only if movie has a Metascore - future titles do not
+            # Include only if movie has a Metascore - future titles are not included
             if container.find('div', class_ = 'ratings-metascore') is not None:
 
                 # Scrape the name
@@ -99,6 +93,7 @@ test_df = pd.DataFrame({'movie':names,
 'year':years,'imdb':imdb_ratings,'genre':genres,'votes':votes,
 'metascore':metascores})
 
+#Export to CSV
 print(test_df.info())
 test_df.head(200)
 test_df.to_csv('IMDbExport.csv', sep=',')
